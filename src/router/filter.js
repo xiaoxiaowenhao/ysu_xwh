@@ -1,7 +1,7 @@
 import router from "@/router/index"
 import store from "@/util/vuex"
 const whitelist = [
-    '/login'
+    '/index'
 ]
 router.beforeEach(function(to,from,next){
     if(whitelist.indexOf(to.path) !== -1)
@@ -15,7 +15,7 @@ router.beforeEach(function(to,from,next){
             next()
         }
         else{
-            next()
+            next('/index')
             //next('/login')
         }
     }

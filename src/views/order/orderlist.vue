@@ -132,7 +132,7 @@ export default {
       multipleSelection: [],
       title: '',
       parentId: 0,
-      myst:1,
+      myst:0,
       st:[{id:0,name:'全部'},{id:1,name:'待审批'},{id:2,name:'等待管理员审核'},{id:3,name:'已通过'},{id:5,name:'已驳回'},{id:4,name:'已取消'}]
     }
   },

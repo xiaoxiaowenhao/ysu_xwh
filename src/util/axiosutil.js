@@ -20,7 +20,7 @@ export default {
                 callback(response.data)
             }
             else if(response.data.code == 401){
-                router.push('/login')
+                router.push('/index')
             }
             else {
                 Message.error(response.data.message)
@@ -57,7 +57,7 @@ export default {
                 callback(response.data)
             }
             else if(response.data.code == 401){
-                router.push('/login')
+                router.push('/index')
             }
             else {
                 Message.error(response.data.message)

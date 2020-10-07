@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { mapMutations} from 'vuex'
 export default {
   name: "Index",
   data() {
@@ -43,16 +44,34 @@ export default {
         username: "",
         password: "",
       },
+      url: 'https://cer.ysu.edu.cn/authserver/login?service=http://39.96.6.126:38005/login'
     };
   },
   methods: {
+    ...mapMutations(['setToken']),
     login() {
-      console.log(this.form.username);
-      console.log(this.form.password);
-      this.$router.push({ path: "/home" });
+      window.location.href=this.url
+      // console.log(this.form.username);
+      // console.log(this.form.password);
+      // this.$router.push({ path: "/home" });
     },
   },
-  created() {},
+  created() {
+    const token = this.$route.query.token
+        if(token == null)
+        {
+
+        }
+        else
+        {
+          console.log(token)
+            this.axios.setToken(token)
+            this.setToken(token)
+            this.$router.push({
+                path: '/home'
+            })
+        }
+  },
 };
 </script>
 

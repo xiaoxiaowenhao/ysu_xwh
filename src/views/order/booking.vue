@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="primary" icon="el-icon-arrow-left" @click="back">返回上一页</el-button>
+    <!-- <el-button type="primary" icon="el-icon-arrow-left" @click="back">返回上一页</el-button> -->
     <el-form ref="form" :model="form" label-width="80px">
       <el-row>
         <el-col :span="18" :offset="2">
@@ -212,9 +212,6 @@ export default {
         },
         this.form
       );
-    },
-    back() {
-      this.$router.push('/order')
     },
   },
   created() {

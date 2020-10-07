@@ -2,15 +2,10 @@
   <el-container>
     <el-header>
       <el-menu
-        :router="true"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b"
+      :default-active="orderlist" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true"
       >
-        <el-menu-item index="booking">预约中心</el-menu-item>
-        <el-menu-item index="orderlist">我的预约</el-menu-item>
+        <el-menu-item index="orderlist">预约中心</el-menu-item>
+        <el-menu-item index="booking">预约申请</el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
@@ -22,6 +17,8 @@
 <script>
 export default {
   name: "Order",
+  created(){
+  }
 };
 </script>
 

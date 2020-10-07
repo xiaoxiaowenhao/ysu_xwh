@@ -16,7 +16,16 @@ export default new Router({
         children: [{
             path: '/order',
             name: 'Order',
-            component: () => import('@/views/order')
+            component: () => import('@/views/order'),
+            children: [{
+                path: '/booking',
+                name: 'Booking',
+                component: () => import('@/views/order/booking')
+            },{
+                path: '/orderlist',
+                name: 'OrderList',
+                component: () => import('@/views/order/orderlist')
+            }]
         }, {
             path: '/user',
             name: 'User',
@@ -25,10 +34,6 @@ export default new Router({
                 path: '/userdata',
                 name: 'UserData',
                 component: () => import('@/views/user/userdata')
-            }, {
-                path: '/orderlist',
-                name: 'OrderList',
-                component: () => import('@/views/orderlist')
             }]
         }]
     }]

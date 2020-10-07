@@ -1,13 +1,13 @@
 <template>
-  <el-container>
+  <!-- <el-container>
     <el-header class="head">
-      <div class="a" @click="userData">个人信息</div>
-      <div class="b" @click="orderlist">我的预约</div>
+      个人中心
     </el-header>
     <el-main>
       <router-view></router-view>
     </el-main>
-  </el-container>
+  </el-container> -->
+  <router-view></router-view>
 </template>
 
 <script>
@@ -18,14 +18,14 @@ export default {
   },
   methods: {
     userData() {
-      this.$router.push('/userdata')
+      this.$router.push("/userdata");
     },
     orderlist() {
-      this.$router.push('/orderlist')
+      this.$router.push("/orderlist");
     },
   },
   created() {
-    this.$router.push('/userdata')
+    this.$router.push("/userdata");
   },
 };
 </script>
@@ -36,11 +36,13 @@ export default {
   padding: 0;
 }
 .head {
+  line-height: 60px;
+  text-align: center;
   margin: 0;
   padding: 0;
   display: flex;
 }
-.a {
+/* .a {
   display: block;
   flex: 1;
   text-align: center;
@@ -54,5 +56,5 @@ export default {
   border-left: 1px solid slategrey;
   border-bottom: 1px solid slategrey;
   height: 5vh;
-}
+} */
 </style>

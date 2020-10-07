@@ -20,7 +20,7 @@ export default {
   methods: {
     order() {
       //console.log(123)
-      this.$router.push('/order')
+      this.$router.push('/orderlist')
     },
     user() {
       //console.log(321)

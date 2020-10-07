@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "mallMember-detail",
+  name: "UserData",
   data() {
     return {
       //请求回来的数据
@@ -53,6 +53,9 @@ export default {
     },
   },
   methods: {
+    getData() {
+      
+    },
     //自定义列背景色
     columnStyle({ row, column, rowIndex, columnIndex }) {
       if (columnIndex == 0) {

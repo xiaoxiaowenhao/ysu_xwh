@@ -1,12 +1,4 @@
 <template>
-  <!-- <el-container>
-    <el-header class="head">
-      个人中心
-    </el-header>
-    <el-main>
-      <router-view></router-view>
-    </el-main>
-  </el-container> -->
   <router-view></router-view>
 </template>
 
@@ -20,12 +12,9 @@ export default {
     userData() {
       this.$router.push("/userdata");
     },
-    orderlist() {
-      this.$router.push("/orderlist");
-    },
   },
   created() {
-    this.$router.push("/userdata");
+    this.userData()
   },
 };
 </script>
@@ -42,19 +31,4 @@ export default {
   padding: 0;
   display: flex;
 }
-/* .a {
-  display: block;
-  flex: 1;
-  text-align: center;
-  border-bottom: 1px solid slategrey;
-  height: 5vh;
-}
-.b {
-  display: block;
-  flex: 1;
-  text-align: center;
-  border-left: 1px solid slategrey;
-  border-bottom: 1px solid slategrey;
-  height: 5vh;
-} */
 </style>

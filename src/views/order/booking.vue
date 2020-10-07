@@ -27,7 +27,6 @@
           <el-form-item label="预约设备">
             <div>
               <el-select
-                @change="getOrderTime()"
                 v-model="form.equipment"
                 placeholder="请选择设备"
               >
@@ -148,11 +147,11 @@ export default {
   name: "Booking",
   data() {
     return {
-      Room: [{ id: 1, name: "101" }],
-      Equipment: [{ id: 1, name: "激光炮" }],
-      Time: [{ id: 1, name: "第一节课" }],
-      Consumeable: [{ id: 1, name: "A4纸" }],
-      Teacher: [{ id: 1, name: "黄老师" }],
+      Room: [],
+      Equipment: [],
+      Time: [],
+      Consumeable: [],
+      Teacher: [],
       form: {
         room: "",
         equipment: "",
@@ -171,6 +170,7 @@ export default {
         (response) => {
           if (response.obj != null) {
             this.Equipment = response.obj;
+            console.log(this.Equipment)
           }
         },
         {
@@ -179,11 +179,14 @@ export default {
       );
     },
     getOrderTime() {
-      if (this.form.orderDate != null && this.form.equipmentId != null) {
+      //console.log(this.form.date)
+      if (this.form.date != null && this.form.equipment != null) {
         this.axios.get(
           "/order-time/listFreeTime",
           (response) => {
+            console.log(123)
             this.Time = response.obj;
+            console.log(this.Time)
           },
           {
             equipmentId: this.form.equipment,
@@ -197,6 +200,7 @@ export default {
         "/room/list",
         (response) => {
           this.Room = response.obj;
+          console.log(this.Room)
         },
         {
           active: 1,

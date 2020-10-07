@@ -2,7 +2,9 @@
   <el-container>
     <el-header>
       <el-menu
-      :default-active="orderlist" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true"
+        class="el-menu-demo"
+        mode="horizontal"
+        :router="true"
       >
         <el-menu-item index="orderlist">预约中心</el-menu-item>
         <el-menu-item index="booking">预约申请</el-menu-item>
@@ -17,8 +19,7 @@
 <script>
 export default {
   name: "Order",
-  created(){
-  }
+  created() {},
 };
 </script>
 

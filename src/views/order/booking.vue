@@ -27,6 +27,7 @@
           <el-form-item label="预约设备">
             <div>
               <el-select
+                @change="getOrderTime()"
                 v-model="form.equipment"
                 placeholder="请选择设备"
               >

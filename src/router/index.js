@@ -30,11 +30,6 @@ export default new Router({
             path: '/user',
             name: 'User',
             component: () => import('@/views/user'),
-            children: [{
-                path: '/userdata',
-                name: 'UserData',
-                component: () => import('@/views/user/userdata')
-            }]
         }]
     }]
 })

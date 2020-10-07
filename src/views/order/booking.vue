@@ -8,7 +8,7 @@
             <div>
               <el-select
                 @change="getEquipment()"
-                v-model="form.room"
+                v-model="form.roomId"
                 placeholder="请选择房间"
               >
                 <el-option
@@ -28,7 +28,7 @@
             <div>
               <el-select
                 @change="getOrderTime()"
-                v-model="form.equipment"
+                v-model="form.equipmentId"
                 placeholder="请选择设备"
               >
                 <el-option
@@ -48,7 +48,7 @@
             <div>
               <el-date-picker
                 @change="getOrderTime()"
-                v-model="form.date"
+                v-model="form.orderDate"
                 type="date"
                 placeholder="选择日期"
                 value-format="yyyy-MM-dd"
@@ -62,7 +62,7 @@
           <el-form-item label="预约时间">
             <div>
               <el-select
-                v-model="form.time"
+                v-model="form.orderTimeId"
                 :clearable="true"
                 multiple
                 placeholder="请选择时间"
@@ -85,7 +85,7 @@
           <el-form-item label="预约耗材">
             <div>
               <el-select
-                v-model="form.consumable"
+                v-model="form.consumeableId"
                 :clearable="true"
                 multiple
                 placeholder="请选择耗材"
@@ -105,7 +105,7 @@
         <el-col :span="18" :offset="2">
           <el-form-item label="审批教师">
             <div>
-              <el-select v-model="form.teacher" placeholder="请选择审批老师">
+              <el-select v-model="form.handleTeacher" placeholder="请选择审批老师">
                 <el-option
                   v-for="item in Teacher"
                   :key="item.id"
@@ -154,12 +154,19 @@ export default {
       Consumeable: [],
       Teacher: [],
       form: {
-        room: "",
-        equipment: "",
-        date: "",
-        consumable: "",
-        time: "",
-        teacher: "",
+        //审批老师
+        handleTeacher: "",
+        //预约日期
+        orderDate: null,
+        //预约时间
+        orderTimeId: null,
+        //预约教室
+        roomId: "",
+        //预约设备
+        equipmentId: null,
+        //预约耗材
+        consumeableId: null,
+        //预约详细信息
         detail: "",
       },
     };
@@ -171,27 +178,27 @@ export default {
         (response) => {
           if (response.obj != null) {
             this.Equipment = response.obj;
-            console.log(this.Equipment)
+            //console.log(this.Equipment)
           }
         },
         {
-          roomId: this.form.room,
+          roomId: this.form.roomId,
         }
       );
     },
     getOrderTime() {
-      //console.log(this.form.date)
-      if (this.form.date != null && this.form.equipment != null) {
+      //console.log(this.form.orderDate)
+      if (this.form.orderDate != null && this.form.equipmentId != null) {
         this.axios.get(
           "/order-time/listFreeTime",
           (response) => {
-            console.log(123)
+            //console.log(123)
             this.Time = response.obj;
-            console.log(this.Time)
+            //console.log(this.orderTimeId)
           },
           {
-            equipmentId: this.form.equipment,
-            orderDate: this.form.date,
+            equipmentId: this.form.equipmentId,
+            orderDate: this.form.orderDate,
           }
         );
       }
@@ -201,13 +208,23 @@ export default {
         "/room/list",
         (response) => {
           this.Room = response.obj;
-          console.log(this.Room)
+          //console.log(this.Room)
         },
         {
           active: 1,
           withPage: 0,
         }
       );
+    },
+    getConsumable()
+    {
+      this.axios.get('/consumable/list', response => {
+        this.Consumeable = response.obj
+      },{
+        withPage: 0,
+        active: 1,
+        needOrder:1
+      })
     },
     order() {
       this.axios.post(
@@ -218,9 +235,21 @@ export default {
         this.form
       );
     },
+    getTeacher()
+    {
+      this.axios.get('/ums-user/list', response => {
+        this.Teacher = response.obj
+      },{
+        withPage: 0,
+        active: 1,
+        type:2
+      })
+    },
   },
   created() {
     this.getRoom()
+    this.getConsumable()
+    this.getTeacher()
   },
 };
 </script>

@@ -21,7 +21,6 @@
     style="width: 100%" 
     row-key="id"
     ref="tab"
-    word-wrap: break-word
     @select="select"
     @selection-change="handleSelectionChange">
       <el-table-column type="expand">
@@ -39,25 +38,27 @@
             <el-form-item label="日期">
               <span>{{ props.row.orderDate }}</span>
             </el-form-item>
+          </el-form>
+          <el-form label-position="left" inline class="demo-table-expand">
             <el-form-item label="时间ID">
               <span>{{ props.row.timename }}</span>
             </el-form-item>
+          </el-form>
+          <el-form label-position="left" inline class="demo-table-expand">
             <el-form-item label="预约设备">
               <span>{{ props.row.equipmentname }}</span>
             </el-form-item>
             <el-form-item label="耗材使用">
               <span>{{ props.row.consumablename }}</span>
             </el-form-item>
+            <el-form-item label="预约状态" prop="status">
+              <span v-if="props.row.status === 5">已驳回</span>
+              <span v-if="props.row.status === 1">等待老师审核</span>
+              <span v-else-if="props.row.status === 2">等待管理员审核</span>
+              <span v-else-if="props.row.status === 3">审核通过</span>
+              <span v-else-if="props.row.status === 4">已取消</span>
+            </el-form-item>
           </el-form>
-          <el-form-item label="预约状态" prop="status">
-            <template slot-scope="scope">
-              <span v-if="scope.row.status === 5">已驳回</span>
-              <span v-if="scope.row.status === 1">等待老师审核</span>
-              <span v-else-if="scope.row.status === 2">等待管理员审核</span>
-              <span v-else-if="scope.row.status === 3">审核通过</span>
-              <span v-else-if="scope.row.status === 4">已取消</span>
-            </template>
-          </el-form-item>
         </template>
       </el-table-column>
       <!-- <el-table-column label="id" type="selection" ></el-table-column>
@@ -217,4 +218,16 @@ export default {
 .el-table .reject-row {
   background: #ff0000;
 }
+ .demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
 </style>

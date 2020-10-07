@@ -24,7 +24,9 @@ export default {
       this.$router.push('/orderlist')
     },
   },
-  created() {},
+  created() {
+    this.$router.push('/userdata')
+  },
 };
 </script>
 

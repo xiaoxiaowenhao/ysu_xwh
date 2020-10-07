@@ -24,7 +24,7 @@ export default new Router({
             children: [{
                 path: '/userdata',
                 name: 'UserData',
-                component: () => import('@/views/userdata')
+                component: () => import('@/views/user/userdata')
             }, {
                 path: '/orderlist',
                 name: 'OrderList',

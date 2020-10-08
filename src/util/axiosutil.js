@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/util/vuex'
 import router from '@/router/filter'
 import { Loading, Message, MessageBox } from 'element-ui'
-axios.defaults.baseURL = 'http://localhost:8080'
+axios.defaults.baseURL = 'http://39.96.6.126:38005'
 if(store.getters.getToken)
 {
    axios.defaults.headers.common['token']=store.getters.getToken

@@ -231,9 +231,22 @@ export default {
         "/order/add",
         (response) => {
           console.log(response);
+          this.form.roomId=null
+          this.form.equipmentId=null
+          this.form.consumeableId=null
+          this.form.orderDate=null
+          this.form.orderTimeId=null
+          this.form.handleTeacher=null
+          this.form.detail=null
+          this.Time=null
+          this.Equipment=null
+          this.Consumeable=null
+          this.Teacher=null
+          this.getRoom()
         },
         this.form
       );
+      //this.$refs.form.resetFields()
     },
     getTeacher()
     {

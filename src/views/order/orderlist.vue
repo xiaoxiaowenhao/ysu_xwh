@@ -9,8 +9,7 @@
         v-for="item in st"
         :key="item.id"
         :label="item.name"
-        :value="item.id"
-        :row-class-name="tableRowColour">
+        :value="item.id">
         </el-option>
       </el-select>
       <!-- <el-button type="success" icon="el-icon-check" @click="batchpass()">批量通过</el-button> -->
@@ -22,7 +21,8 @@
     row-key="id"
     ref="tab"
     @select="select"
-    @selection-change="handleSelectionChange">
+    @selection-change="handleSelectionChange"
+    :row-class-name="tableRowClassName">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
@@ -138,7 +138,7 @@ export default {
     }
   },
   created() {
-    this.getData()
+    this.getBySt()
   },
   methods: {
     getData(){
@@ -176,7 +176,7 @@ export default {
     {
       this.multipleSelection = val
     },
-    tableRowColour({row, rowIndex}) {
+    tableRowClassName({row, rowIndex}) {
         if (row.status === 1) {
           return 'waiting-row';
         } else if (row.status === 2) {
@@ -189,6 +189,18 @@ export default {
           return 'reject-row';
         }
         return '';
+        // if (rowIndex === 1) {
+        //   return 'waiting-row';
+        // } else if (rowIndex === 2) {
+        //   return 'waiting-row';
+        // } else if (rowIndex === 3) {
+        //   return 'success-row';
+        // } else if (rowIndex === 4) {
+        //   return 'candel-row';
+        // } else if (rowIndex === 5) {
+        //   return 'reject-row';
+        // }
+        // return '';
       }
   },
   components:{
@@ -204,30 +216,31 @@ export default {
 }
 
 .el-table .waiting-row {
-  background: yellow;
+  background: rgba(255, 255, 0, 0.25);
 }
 
 .el-table .success-row {
-  background: #09ff00;
+  background: #09ff0040;
 }
 
 .el-table .candel-row {
-  background: #6b6b6b;
+  background: #6b6b6b40;
 }
 
 .el-table .reject-row {
-  background: #ff0000;
+  background: #ff000040;
 }
- .demo-table-expand {
-    font-size: 0;
-  }
-  .demo-table-expand label {
-    width: 90px;
-    color: #99a9bf;
-  }
-  .demo-table-expand .el-form-item {
-    margin-right: 0;
-    margin-bottom: 0;
-    width: 50%;
-  }
+
+.demo-table-expand {
+  font-size: 0;
+}
+.demo-table-expand label {
+  width: 90px;
+  color: #99a9bf;
+}
+.demo-table-expand .el-form-item {
+  margin-right: 0;
+  margin-bottom: 0;
+  width: 50%;
+}
 </style>

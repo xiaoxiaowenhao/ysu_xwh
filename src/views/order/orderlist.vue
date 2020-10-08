@@ -23,7 +23,7 @@
     @select="select"
     @selection-change="handleSelectionChange"
     :row-class-name="tableRowClassName">
-      <el-table-column type="expand">
+      <el-table-column width="40" type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
             <el-form-item label="编号">
@@ -64,9 +64,9 @@
       <!-- <el-table-column label="id" type="selection" ></el-table-column>
       <el-table-column label="编号" width="80" prop="id"></el-table-column>
       <el-table-column label="申请人" prop="username"></el-table-column> -->
-      <el-table-column label="房间名" prop="roomname"></el-table-column>
+      <el-table-column label="房间名" width="80" prop="roomname"></el-table-column>
       <el-table-column label="日期" prop="orderDate"></el-table-column>
-      <el-table-column label="时间Id" width="200" prop="timename"></el-table-column>
+      <el-table-column label="时间Id" width="175" prop="timename"></el-table-column>
       <!-- <el-table-column label="预约设备" prop="equipmentname"></el-table-column>
       <el-table-column label="耗材使用" prop="consumablename"></el-table-column>
       <el-table-column label="预约状态" prop="status">
@@ -77,7 +77,7 @@
           <span v-else-if="scope.row.status === 3">审核通过</span>
         </template>
       </el-table-column> -->
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="100">
         <template slot-scope="scope">
           <template v-if="scope.row.status === 1">
             <!-- <el-button size="mini" type="success" @click="handleOk(scope.row.id)">通过</el-button>
@@ -86,7 +86,7 @@
           </template>
           <template v-else-if="scope.row.status === 2">
             <!-- <el-button size="mini" type="info" disabled @click="handleBack(scope.row.id)">等待</el-button> -->
-            <el-button size="mini" type="danger" @click="handleCancel(scope.row)">取消</el-button>
+            <el-button size="mini" disabled @click="handleCancel(scope.row)">等待中</el-button>
           </template>
           <template v-else-if="scope.row.status === 3">
             <el-button size="mini" disabled type="success" @click="void(0)">已成功</el-button>
@@ -95,7 +95,7 @@
             <el-button size="mini" disabled type="info" @click="void(0)">已取消</el-button>
           </template>
           <template v-else-if="scope.row.status === 5">
-            <el-button size="mini" disabled type="info" @click="void(0)">已驳回</el-button>
+            <el-button size="mini" disabled type="danger" @click="void(0)">已驳回</el-button>
           </template>
         </template>
       </el-table-column>

@@ -48,7 +48,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(['setToken']),
+    ...mapMutations(['setToken','setRole']),
     login() {
       window.location.href=this.url
       // console.log(this.form.username);
@@ -65,8 +65,9 @@ export default {
         else
         {
           console.log(token)
-            this.axios.setToken(token)
+            this.axios.setToken(token,'user')
             this.setToken(token)
+            this.setRole('user')
             this.$router.push({
                 path: '/home'
             })

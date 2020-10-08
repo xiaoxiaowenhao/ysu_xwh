@@ -1,4 +1,4 @@
 export default{
-    getToken(state){return state.token}
-    
+    getToken(state){return state.token},
+    getRole(state){return state.role}
 }

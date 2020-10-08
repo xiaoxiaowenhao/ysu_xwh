@@ -6,6 +6,7 @@ axios.defaults.baseURL = 'http://39.96.6.126:38005'
 if(store.getters.getToken)
 {
    axios.defaults.headers.common['token']=store.getters.getToken
+   axios.defaults.headers.common['role']=store.getters.getRole
 }
 export default {
     get(url, callback, params = {}) {
@@ -110,8 +111,9 @@ export default {
             })
         })
     },
-    setToken(token)
+    setToken(token,role)
     {
         axios.defaults.headers.common['token']=token
+        axios.defaults.headers.common['role']=role
     }
 }

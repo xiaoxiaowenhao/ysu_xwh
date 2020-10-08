@@ -25,7 +25,7 @@ export default {
     user() {
       //console.log(321)
       this.$router.push('/user')
-    }
+    },
   },
   created() {
     this.$router.push('/order')

@@ -12,6 +12,9 @@
         <el-table-column prop="amount1"></el-table-column>
       </el-table>
     </section>
+    <el-row>
+      <el-button type="danger" @click="logout">登出</el-button>
+    </el-row>
   </div>
 </template>
 
@@ -20,12 +23,7 @@ export default {
   name: "User",
   data() {
     return {
-      userdata: {
-        username: "刘佳",
-        usernum: "170120010235",
-        usertel: "15389332481",
-        usermail: "1033669061@qq.com",
-      },
+      userdata: {},
     };
   },
   computed: {
@@ -39,10 +37,6 @@ export default {
         {
           name: "学号",
           amount1: this.userdata.idno,
-        },
-        {
-          name: "电话号码",
-          amount1: this.userdata.telephone,
         },
         {
           name: "邮箱",
@@ -72,7 +66,33 @@ export default {
           this.userdata=response.obj
         }
       );
-  },
+    },
+    logout() {
+      //清空服务器端的登录状态
+      if(this.getRole() == 'admin')
+      {
+        this.axios.post('/ums-admin/logout',response => {
+          this.axios.setToken(null,null)
+          this.setRole(null)
+          this.setToken(null)
+          this.$router.push({
+            path: '/index'
+          })
+        },{id: this.myuser.id})
+      }
+      else if(this.getRole() == 'user')
+      {
+        this.axios.setToken(null,null)
+        this.setRole(null)
+        this.setToken(null)
+        window.location.href = 'https://cer.ysu.edu.cn/authserver/logout?service=http://39.96.6.126:38005/logout'
+      }
+      else{
+        this.$router.push({
+            path: '/index'
+          })
+      }
+    },
   },
   
   created(){

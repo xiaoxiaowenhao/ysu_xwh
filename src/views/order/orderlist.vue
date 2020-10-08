@@ -39,8 +39,8 @@
               <span>{{ props.row.orderDate }}</span>
             </el-form-item>
           </el-form>
-          <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="时间ID">
+          <el-form label-position="left" class="demo-table-expand">
+            <el-form-item label="时间ID" id="time">
               <span>{{ props.row.timename }}</span>
             </el-form-item>
           </el-form>
@@ -242,5 +242,10 @@ export default {
   margin-right: 0;
   margin-bottom: 0;
   width: 50%;
+}
+.demo-table-expand #time{
+  margin-right: 0;
+  margin-bottom: 0;
+  width: 100%;
 }
 </style>

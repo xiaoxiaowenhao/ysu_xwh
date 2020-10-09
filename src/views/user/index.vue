@@ -12,9 +12,11 @@
         <el-table-column prop="amount1"></el-table-column>
       </el-table>
     </section>
-    <el-row>
-      <el-button type="danger" @click="logout">登出</el-button>
-    </el-row>
+    <div class="logout">
+      <el-row type="flex" justify="center">
+        <el-button type="danger" @click="logout">登出</el-button>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -102,15 +104,7 @@ export default {
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
-.head {
-  line-height: 60px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  display: flex;
+.logout{
+   margin-top: 10px
 }
 </style>
